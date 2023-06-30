@@ -9,6 +9,7 @@ django-channels==0.7.0
 django-redis==5.2.0
 djangorestframework==3.14.0
 djangorestframework-simplejwt==5.2.2
+django-environ==0.10.0
 hiredis==2.2.3
 hyperlink==21.0.0
 idna==3.4
