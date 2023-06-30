@@ -1,0 +1,427 @@
+Attaching to dockerize_boom_nginx_1, dockerize_boom_django_gunicorn_1, dockerize_boom_redis_1
+[36mdjango_gunicorn_1  |[0m Operations to perform:
+[36mdjango_gunicorn_1  |[0m   Apply all migrations: admin, auth, contenttypes, sessions
+[36mdjango_gunicorn_1  |[0m Running migrations:
+[36mdjango_gunicorn_1  |[0m   Applying contenttypes.0001_initial... OK
+[36mdjango_gunicorn_1  |[0m   Applying auth.0001_initial... OK
+[36mdjango_gunicorn_1  |[0m   Applying admin.0001_initial... OK
+[36mdjango_gunicorn_1  |[0m   Applying admin.0002_logentry_remove_auto_add... OK
+[36mdjango_gunicorn_1  |[0m   Applying admin.0003_logentry_add_action_flag_choices... OK
+[36mdjango_gunicorn_1  |[0m   Applying contenttypes.0002_remove_content_type_name... OK
+[36mdjango_gunicorn_1  |[0m   Applying auth.0002_alter_permission_name_max_length... OK
+[36mdjango_gunicorn_1  |[0m   Applying auth.0003_alter_user_email_max_length... OK
+[36mdjango_gunicorn_1  |[0m   Applying auth.0004_alter_user_username_opts... OK
+[36mdjango_gunicorn_1  |[0m   Applying auth.0005_alter_user_last_login_null... OK
+[36mdjango_gunicorn_1  |[0m   Applying auth.0006_require_contenttypes_0002... OK
+[36mdjango_gunicorn_1  |[0m   Applying auth.0007_alter_validators_add_error_messages... OK
+[36mdjango_gunicorn_1  |[0m   Applying auth.0008_alter_user_username_max_length... OK
+[36mdjango_gunicorn_1  |[0m   Applying auth.0009_alter_user_last_name_max_length... OK
+[36mdjango_gunicorn_1  |[0m   Applying auth.0010_alter_group_name_max_length... OK
+[36mdjango_gunicorn_1  |[0m   Applying auth.0011_update_proxy_permissions... OK
+[36mdjango_gunicorn_1  |[0m   Applying auth.0012_alter_user_first_name_max_length... OK
+[36mdjango_gunicorn_1  |[0m   Applying sessions.0001_initial... OK
+[36mdjango_gunicorn_1  |[0m 
+[36mdjango_gunicorn_1  |[0m 0 static files copied to '/static', 128 unmodified.
+[36mdjango_gunicorn_1  |[0m [2022-07-19 03:18:11 +0000] [9] [INFO] Starting gunicorn 20.1.0
+[36mdjango_gunicorn_1  |[0m [2022-07-19 03:18:11 +0000] [9] [INFO] Listening at: http://127.0.0.1:8000 (9)
+[36mdjango_gunicorn_1  |[0m [2022-07-19 03:18:11 +0000] [9] [INFO] Using worker: uvicorn.workers.UvicornWorker
+[36mdjango_gunicorn_1  |[0m [2022-07-19 03:18:11 +0000] [10] [INFO] Booting worker with pid: 10
+[36mdjango_gunicorn_1  |[0m [2022-07-19 03:18:11 +0000] [10] [ERROR] Exception in worker process
+[36mdjango_gunicorn_1  |[0m Traceback (most recent call last):
+[36mdjango_gunicorn_1  |[0m   File "/usr/local/lib/python3.10/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+[36mdjango_gunicorn_1  |[0m     worker.init_process()
+[36mdjango_gunicorn_1  |[0m   File "/usr/local/lib/python3.10/site-packages/uvicorn/workers.py", line 66, in init_process
+[36mdjango_gunicorn_1  |[0m     super(UvicornWorker, self).init_process()
+[36mdjango_gunicorn_1  |[0m   File "/usr/local/lib/python3.10/site-packages/gunicorn/workers/base.py", line 134, in init_process
+[36mdjango_gunicorn_1  |[0m     self.load_wsgi()
+[36mdjango_gunicorn_1  |[0m   File "/usr/local/lib/python3.10/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+[36mdjango_gunicorn_1  |[0m     self.wsgi = self.app.wsgi()
+[36mdjango_gunicorn_1  |[0m   File "/usr/local/lib/python3.10/site-packages/gunicorn/app/base.py", line 67, in wsgi
+[36mdjango_gunicorn_1  |[0m     self.callable = self.load()
+[36mdjango_gunicorn_1  |[0m   File "/usr/local/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+[36mdjango_gunicorn_1  |[0m     return self.load_wsgiapp()
+[36mdjango_gunicorn_1  |[0m   File "/usr/local/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+[36mdjango_gunicorn_1  |[0m     return util.import_app(self.app_uri)
+[36mdjango_gunicorn_1  |[0m   File "/usr/local/lib/python3.10/site-packages/gunicorn/util.py", line 359, in import_app
+[36mdjango_gunicorn_1  |[0m     mod = importlib.import_module(module)
+[36mdjango_gunicorn_1  |[0m   File "/usr/local/lib/python3.10/importlib/__init__.py", line 126, in import_module
+[36mdjango_gunicorn_1  |[0m     return _bootstrap._gcd_import(name[level:], package, level)
+[36mdjango_gunicorn_1  |[0m   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+[36mdjango_gunicorn_1  |[0m   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+[36mdjango_gunicorn_1  |[0m   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+[36mdjango_gunicorn_1  |[0m   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+[36mdjango_gunicorn_1  |[0m   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+[36mdjango_gunicorn_1  |[0m   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+[36mdjango_gunicorn_1  |[0m   File "/app/boom/asgi.py", line 59, in <module>
+[36mdjango_gunicorn_1  |[0m     'http': get_asgi_application(),
+[36mdjango_gunicorn_1  |[0m   File "/usr/local/lib/python3.10/site-packages/django/core/asgi.py", line 12, in get_asgi_application
+[36mdjango_gunicorn_1  |[0m     django.setup(set_prefix=False)
+[36mdjango_gunicorn_1  |[0m   File "/usr/local/lib/python3.10/site-packages/django/__init__.py", line 19, in setup
+[36mdjango_gunicorn_1  |[0m     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+[36mdjango_gunicorn_1  |[0m   File "/usr/local/lib/python3.10/site-packages/django/conf/__init__.py", line 87, in __getattr__
+[36mdjango_gunicorn_1  |[0m     self._setup(name)
+[36mdjango_gunicorn_1  |[0m   File "/usr/local/lib/python3.10/site-packages/django/conf/__init__.py", line 74, in _setup
+[36mdjango_gunicorn_1  |[0m     self._wrapped = Settings(settings_module)
+[36mdjango_gunicorn_1  |[0m   File "/usr/local/lib/python3.10/site-packages/django/conf/__init__.py", line 183, in __init__
+[36mdjango_gunicorn_1  |[0m     mod = importlib.import_module(self.SETTINGS_MODULE)
+[36mdjango_gunicorn_1  |[0m   File "/usr/local/lib/python3.10/importlib/__init__.py", line 126, in import_module
+[36mdjango_gunicorn_1  |[0m     return _bootstrap._gcd_import(name[level:], package, level)
+[36mdjango_gunicorn_1  |[0m   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+[36mdjango_gunicorn_1  |[0m   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+[36mdjango_gunicorn_1  |[0m   File "<frozen importlib._bootstrap>", line 992, in _find_and_load_unlocked
+[36mdjango_gunicorn_1  |[0m   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+[36mdjango_gunicorn_1  |[0m   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+[36mdjango_gunicorn_1  |[0m   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+[36mdjango_gunicorn_1  |[0m   File "<frozen importlib._bootstrap>", line 1004, in _find_and_load_unlocked
+[36mdjango_gunicorn_1  |[0m ModuleNotFoundError: No module named 'core'
+[36mdjango_gunicorn_1  |[0m [2022-07-19 03:18:11 +0000] [10] [INFO] Worker exiting (pid: 10)
+[36mdjango_gunicorn_1  |[0m [2022-07-19 03:18:12 +0000] [9] [INFO] Shutting down: Master
+[36mdjango_gunicorn_1  |[0m [2022-07-19 03:18:12 +0000] [9] [INFO] Reason: Worker failed to boot.
+[33mnginx_1            |[0m /docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
+[33mnginx_1            |[0m /docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+[33mnginx_1            |[0m /docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+[33mnginx_1            |[0m 10-listen-on-ipv6-by-default.sh: Getting the checksum of /etc/nginx/conf.d/default.conf
+[33mnginx_1            |[0m 10-listen-on-ipv6-by-default.sh: /etc/nginx/conf.d/default.conf differs from the packages version, exiting
+[33mnginx_1            |[0m /docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
+[33mnginx_1            |[0m /docker-entrypoint.sh: Configuration complete; ready for start up
+[32mredis_1            |[0m 1:C 19 Jul 2022 01:35:56.506 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+[32mredis_1            |[0m 1:C 19 Jul 2022 01:35:56.506 # Redis version=7.0.4, bits=64, commit=00000000, modified=0, pid=1, just started
+[32mredis_1            |[0m 1:C 19 Jul 2022 01:35:56.506 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:35:56.507 * monotonic clock: POSIX clock_gettime
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:35:56.507 * Running mode=standalone, port=6379.
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:35:56.507 # Server initialized
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:35:56.508 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:35:56.508 * Ready to accept connections
+[32mredis_1            |[0m 1:signal-handler (1658194664) Received SIGTERM scheduling shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:37:44.287 # User requested shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:37:44.287 * Saving the final RDB snapshot before exiting.
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:37:44.294 * DB saved on disk
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:37:44.294 # Redis is now ready to exit, bye bye...
+[32mredis_1            |[0m 1:C 19 Jul 2022 01:38:47.787 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+[32mredis_1            |[0m 1:C 19 Jul 2022 01:38:47.787 # Redis version=7.0.4, bits=64, commit=00000000, modified=0, pid=1, just started
+[32mredis_1            |[0m 1:C 19 Jul 2022 01:38:47.787 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:38:47.788 * monotonic clock: POSIX clock_gettime
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:38:47.789 * Running mode=standalone, port=6379.
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:38:47.789 # Server initialized
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:38:47.789 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:38:47.789 * Loading RDB produced by version 7.0.4
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:38:47.789 * RDB age 63 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:38:47.789 * RDB memory usage when created 0.82 Mb
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:38:47.789 * Done loading RDB, keys loaded: 0, keys expired: 0.
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:38:47.789 * DB loaded from disk: 0.000 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:38:47.789 * Ready to accept connections
+[32mredis_1            |[0m 1:signal-handler (1658194950) Received SIGTERM scheduling shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:42:30.409 # User requested shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:42:30.409 * Saving the final RDB snapshot before exiting.
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:42:30.415 * DB saved on disk
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:42:30.416 # Redis is now ready to exit, bye bye...
+[32mredis_1            |[0m 1:C 19 Jul 2022 01:46:39.354 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+[32mredis_1            |[0m 1:C 19 Jul 2022 01:46:39.354 # Redis version=7.0.4, bits=64, commit=00000000, modified=0, pid=1, just started
+[32mredis_1            |[0m 1:C 19 Jul 2022 01:46:39.354 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:46:39.354 * monotonic clock: POSIX clock_gettime
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:46:39.355 * Running mode=standalone, port=6379.
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:46:39.355 # Server initialized
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:46:39.355 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:46:39.355 * Loading RDB produced by version 7.0.4
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:46:39.355 * RDB age 249 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:46:39.355 * RDB memory usage when created 0.82 Mb
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:46:39.355 * Done loading RDB, keys loaded: 0, keys expired: 0.
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:46:39.355 * DB loaded from disk: 0.000 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:46:39.355 * Ready to accept connections
+[32mredis_1            |[0m 1:signal-handler (1658195524) Received SIGTERM scheduling shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:52:04.054 # User requested shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:52:04.054 * Saving the final RDB snapshot before exiting.
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:52:04.062 * DB saved on disk
+[32mredis_1            |[0m 1:M 19 Jul 2022 01:52:04.062 # Redis is now ready to exit, bye bye...
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:02:34.935 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:02:34.935 # Redis version=7.0.4, bits=64, commit=00000000, modified=0, pid=1, just started
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:02:34.935 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:02:34.936 * monotonic clock: POSIX clock_gettime
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:02:34.937 * Running mode=standalone, port=6379.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:02:34.938 # Server initialized
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:02:34.938 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:02:34.938 * Loading RDB produced by version 7.0.4
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:02:34.938 * RDB age 630 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:02:34.938 * RDB memory usage when created 0.82 Mb
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:02:34.938 * Done loading RDB, keys loaded: 0, keys expired: 0.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:02:34.938 * DB loaded from disk: 0.000 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:02:34.938 * Ready to accept connections
+[32mredis_1            |[0m 1:signal-handler (1658196369) Received SIGTERM scheduling shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:06:09.125 # User requested shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:06:09.125 * Saving the final RDB snapshot before exiting.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:06:09.132 * DB saved on disk
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:06:09.132 # Redis is now ready to exit, bye bye...
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:06:20.327 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:06:20.327 # Redis version=7.0.4, bits=64, commit=00000000, modified=0, pid=1, just started
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:06:20.327 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:06:20.327 * monotonic clock: POSIX clock_gettime
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:06:20.328 * Running mode=standalone, port=6379.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:06:20.328 # Server initialized
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:06:20.328 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:06:20.328 * Loading RDB produced by version 7.0.4
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:06:20.328 * RDB age 11 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:06:20.328 * RDB memory usage when created 0.82 Mb
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:06:20.328 * Done loading RDB, keys loaded: 0, keys expired: 0.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:06:20.328 * DB loaded from disk: 0.000 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:06:20.328 * Ready to accept connections
+[32mredis_1            |[0m 1:signal-handler (1658197141) Received SIGTERM scheduling shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:19:01.382 # User requested shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:19:01.382 * Saving the final RDB snapshot before exiting.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:19:01.389 * DB saved on disk
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:19:01.389 # Redis is now ready to exit, bye bye...
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:19:39.917 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:19:39.917 # Redis version=7.0.4, bits=64, commit=00000000, modified=0, pid=1, just started
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:19:39.917 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:19:39.918 * monotonic clock: POSIX clock_gettime
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:19:39.918 * Running mode=standalone, port=6379.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:19:39.918 # Server initialized
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:19:39.918 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:19:39.919 * Loading RDB produced by version 7.0.4
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:19:39.919 * RDB age 38 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:19:39.919 * RDB memory usage when created 0.82 Mb
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:19:39.919 * Done loading RDB, keys loaded: 0, keys expired: 0.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:19:39.919 * DB loaded from disk: 0.000 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:19:39.919 * Ready to accept connections
+[32mredis_1            |[0m 1:signal-handler (1658197370) Received SIGTERM scheduling shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:22:50.337 # User requested shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:22:50.337 * Saving the final RDB snapshot before exiting.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:22:50.345 * DB saved on disk
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:22:50.345 # Redis is now ready to exit, bye bye...
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:23:02.338 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:23:02.338 # Redis version=7.0.4, bits=64, commit=00000000, modified=0, pid=1, just started
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:23:02.338 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:23:02.338 * monotonic clock: POSIX clock_gettime
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:23:02.339 * Running mode=standalone, port=6379.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:23:02.339 # Server initialized
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:23:02.339 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:23:02.340 * Loading RDB produced by version 7.0.4
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:23:02.340 * RDB age 12 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:23:02.340 * RDB memory usage when created 0.82 Mb
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:23:02.340 * Done loading RDB, keys loaded: 0, keys expired: 0.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:23:02.340 * DB loaded from disk: 0.000 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:23:02.340 * Ready to accept connections
+[32mredis_1            |[0m 1:signal-handler (1658197543) Received SIGTERM scheduling shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:25:43.493 # User requested shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:25:43.493 * Saving the final RDB snapshot before exiting.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:25:43.502 * DB saved on disk
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:25:43.502 # Redis is now ready to exit, bye bye...
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:29:08.706 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:29:08.706 # Redis version=7.0.4, bits=64, commit=00000000, modified=0, pid=1, just started
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:29:08.706 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:29:08.707 * monotonic clock: POSIX clock_gettime
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:29:08.707 * Running mode=standalone, port=6379.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:29:08.708 # Server initialized
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:29:08.708 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:29:08.708 * Loading RDB produced by version 7.0.4
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:29:08.708 * RDB age 205 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:29:08.708 * RDB memory usage when created 0.82 Mb
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:29:08.708 * Done loading RDB, keys loaded: 0, keys expired: 0.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:29:08.708 * DB loaded from disk: 0.000 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:29:08.708 * Ready to accept connections
+[32mredis_1            |[0m 1:signal-handler (1658198744) Received SIGTERM scheduling shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:45:44.039 # User requested shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:45:44.039 * Saving the final RDB snapshot before exiting.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:45:44.054 * DB saved on disk
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:45:44.054 # Redis is now ready to exit, bye bye...
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:45:55.168 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:45:55.168 # Redis version=7.0.4, bits=64, commit=00000000, modified=0, pid=1, just started
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:45:55.168 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:45:55.168 * monotonic clock: POSIX clock_gettime
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:45:55.170 * Running mode=standalone, port=6379.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:45:55.170 # Server initialized
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:45:55.170 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:45:55.171 * Loading RDB produced by version 7.0.4
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:45:55.171 * RDB age 11 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:45:55.171 * RDB memory usage when created 0.82 Mb
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:45:55.171 * Done loading RDB, keys loaded: 0, keys expired: 0.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:45:55.171 * DB loaded from disk: 0.000 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:45:55.171 * Ready to accept connections
+[32mredis_1            |[0m 1:signal-handler (1658198829) Received SIGTERM scheduling shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:09.653 # User requested shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:09.653 * Saving the final RDB snapshot before exiting.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:09.658 * DB saved on disk
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:09.658 # Redis is now ready to exit, bye bye...
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:47:18.144 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:47:18.144 # Redis version=7.0.4, bits=64, commit=00000000, modified=0, pid=1, just started
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:47:18.144 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:18.145 * monotonic clock: POSIX clock_gettime
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:18.145 * Running mode=standalone, port=6379.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:18.145 # Server initialized
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:18.145 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:18.147 * Loading RDB produced by version 7.0.4
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:18.147 * RDB age 9 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:18.147 * RDB memory usage when created 0.82 Mb
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:18.147 * Done loading RDB, keys loaded: 0, keys expired: 0.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:18.147 * DB loaded from disk: 0.000 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:18.147 * Ready to accept connections
+[32mredis_1            |[0m 1:signal-handler (1658198869) Received SIGTERM scheduling shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:49.473 # User requested shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:49.473 * Saving the final RDB snapshot before exiting.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:49.480 * DB saved on disk
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:49.480 # Redis is now ready to exit, bye bye...
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:47:57.779 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:47:57.779 # Redis version=7.0.4, bits=64, commit=00000000, modified=0, pid=1, just started
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:47:57.779 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:57.779 * monotonic clock: POSIX clock_gettime
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:57.780 * Running mode=standalone, port=6379.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:57.780 # Server initialized
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:57.780 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:57.781 * Loading RDB produced by version 7.0.4
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:57.781 * RDB age 8 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:57.781 * RDB memory usage when created 0.82 Mb
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:57.781 * Done loading RDB, keys loaded: 0, keys expired: 0.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:57.781 * DB loaded from disk: 0.001 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:47:57.781 * Ready to accept connections
+[32mredis_1            |[0m 1:signal-handler (1658198985) Received SIGTERM scheduling shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:49:45.781 # User requested shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:49:45.781 * Saving the final RDB snapshot before exiting.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:49:45.788 * DB saved on disk
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:49:45.788 # Redis is now ready to exit, bye bye...
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:49:54.148 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:49:54.148 # Redis version=7.0.4, bits=64, commit=00000000, modified=0, pid=1, just started
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:49:54.148 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:49:54.149 * monotonic clock: POSIX clock_gettime
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:49:54.150 * Running mode=standalone, port=6379.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:49:54.150 # Server initialized
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:49:54.150 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:49:54.150 * Loading RDB produced by version 7.0.4
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:49:54.150 * RDB age 9 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:49:54.150 * RDB memory usage when created 0.82 Mb
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:49:54.150 * Done loading RDB, keys loaded: 0, keys expired: 0.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:49:54.150 * DB loaded from disk: 0.000 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:49:54.150 * Ready to accept connections
+[32mredis_1            |[0m 1:signal-handler (1658199024) Received SIGTERM scheduling shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:50:24.069 # User requested shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:50:24.069 * Saving the final RDB snapshot before exiting.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:50:24.080 * DB saved on disk
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:50:24.080 # Redis is now ready to exit, bye bye...
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:50:34.794 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:50:34.794 # Redis version=7.0.4, bits=64, commit=00000000, modified=0, pid=1, just started
+[32mredis_1            |[0m 1:C 19 Jul 2022 02:50:34.794 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:50:34.795 * monotonic clock: POSIX clock_gettime
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:50:34.797 * Running mode=standalone, port=6379.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:50:34.797 # Server initialized
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:50:34.797 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:50:34.797 * Loading RDB produced by version 7.0.4
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:50:34.797 * RDB age 10 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:50:34.797 * RDB memory usage when created 0.82 Mb
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:50:34.797 * Done loading RDB, keys loaded: 0, keys expired: 0.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:50:34.797 * DB loaded from disk: 0.000 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:50:34.797 * Ready to accept connections
+[32mredis_1            |[0m 1:signal-handler (1658199204) Received SIGTERM scheduling shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:53:24.951 # User requested shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:53:24.951 * Saving the final RDB snapshot before exiting.
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:53:24.961 * DB saved on disk
+[32mredis_1            |[0m 1:M 19 Jul 2022 02:53:24.961 # Redis is now ready to exit, bye bye...
+[32mredis_1            |[0m 1:C 19 Jul 2022 03:03:55.310 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+[32mredis_1            |[0m 1:C 19 Jul 2022 03:03:55.310 # Redis version=7.0.4, bits=64, commit=00000000, modified=0, pid=1, just started
+[32mredis_1            |[0m 1:C 19 Jul 2022 03:03:55.310 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:03:55.311 * monotonic clock: POSIX clock_gettime
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:03:55.312 * Running mode=standalone, port=6379.
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:03:55.312 # Server initialized
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:03:55.312 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:03:55.313 * Loading RDB produced by version 7.0.4
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:03:55.313 * RDB age 631 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:03:55.313 * RDB memory usage when created 0.82 Mb
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:03:55.313 * Done loading RDB, keys loaded: 0, keys expired: 0.
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:03:55.313 * DB loaded from disk: 0.000 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:03:55.313 * Ready to accept connections
+[32mredis_1            |[0m 1:signal-handler (1658199984) Received SIGTERM scheduling shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:06:24.550 # User requested shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:06:24.550 * Saving the final RDB snapshot before exiting.
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:06:24.559 * DB saved on disk
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:06:24.559 # Redis is now ready to exit, bye bye...
+[32mredis_1            |[0m 1:C 19 Jul 2022 03:06:31.634 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+[32mredis_1            |[0m 1:C 19 Jul 2022 03:06:31.634 # Redis version=7.0.4, bits=64, commit=00000000, modified=0, pid=1, just started
+[32mredis_1            |[0m 1:C 19 Jul 2022 03:06:31.634 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:06:31.634 * monotonic clock: POSIX clock_gettime
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:06:31.635 * Running mode=standalone, port=6379.
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:06:31.635 # Server initialized
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:06:31.635 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:06:31.635 * Loading RDB produced by version 7.0.4
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:06:31.635 * RDB age 7 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:06:31.635 * RDB memory usage when created 0.82 Mb
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:06:31.635 * Done loading RDB, keys loaded: 0, keys expired: 0.
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:06:31.635 * DB loaded from disk: 0.000 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:06:31.635 * Ready to accept connections
+[36mdockerize_boom_django_gunicorn_1 exited with code 3
+[0m[32mredis_1            |[0m 1:signal-handler (1658200052) Received SIGTERM scheduling shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:07:32.180 # User requested shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:07:32.180 * Saving the final RDB snapshot before exiting.
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:07:32.186 * DB saved on disk
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:07:32.186 # Redis is now ready to exit, bye bye...
+[32mredis_1            |[0m 1:C 19 Jul 2022 03:07:45.700 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+[32mredis_1            |[0m 1:C 19 Jul 2022 03:07:45.700 # Redis version=7.0.4, bits=64, commit=00000000, modified=0, pid=1, just started
+[32mredis_1            |[0m 1:C 19 Jul 2022 03:07:45.700 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:07:45.700 * monotonic clock: POSIX clock_gettime
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:07:45.701 * Running mode=standalone, port=6379.
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:07:45.701 # Server initialized
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:07:45.701 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:07:45.702 * Loading RDB produced by version 7.0.4
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:07:45.702 * RDB age 13 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:07:45.702 * RDB memory usage when created 0.82 Mb
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:07:45.702 * Done loading RDB, keys loaded: 0, keys expired: 0.
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:07:45.702 * DB loaded from disk: 0.000 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:07:45.702 * Ready to accept connections
+[32mredis_1            |[0m 1:signal-handler (1658200545) Received SIGTERM scheduling shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:15:45.264 # User requested shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:15:45.264 * Saving the final RDB snapshot before exiting.
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:15:45.271 * DB saved on disk
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:15:45.271 # Redis is now ready to exit, bye bye...
+[32mredis_1            |[0m 1:C 19 Jul 2022 03:16:01.787 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+[32mredis_1            |[0m 1:C 19 Jul 2022 03:16:01.787 # Redis version=7.0.4, bits=64, commit=00000000, modified=0, pid=1, just started
+[32mredis_1            |[0m 1:C 19 Jul 2022 03:16:01.787 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:16:01.788 * monotonic clock: POSIX clock_gettime
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:16:01.788 * Running mode=standalone, port=6379.
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:16:01.788 # Server initialized
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:16:01.788 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:16:01.789 * Loading RDB produced by version 7.0.4
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:16:01.789 * RDB age 16 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:16:01.789 * RDB memory usage when created 0.82 Mb
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:16:01.789 * Done loading RDB, keys loaded: 0, keys expired: 0.
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:16:01.789 * DB loaded from disk: 0.000 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:16:01.789 * Ready to accept connections
+[32mredis_1            |[0m 1:signal-handler (1658200569) Received SIGTERM scheduling shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:16:09.614 # User requested shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:16:09.614 * Saving the final RDB snapshot before exiting.
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:16:09.624 * DB saved on disk
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:16:09.624 # Redis is now ready to exit, bye bye...
+[32mredis_1            |[0m 1:C 19 Jul 2022 03:17:17.348 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+[32mredis_1            |[0m 1:C 19 Jul 2022 03:17:17.348 # Redis version=7.0.4, bits=64, commit=00000000, modified=0, pid=1, just started
+[32mredis_1            |[0m 1:C 19 Jul 2022 03:17:17.348 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:17:17.349 * monotonic clock: POSIX clock_gettime
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:17:17.349 * Running mode=standalone, port=6379.
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:17:17.349 # Server initialized
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:17:17.349 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:17:17.350 * Loading RDB produced by version 7.0.4
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:17:17.350 * RDB age 68 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:17:17.350 * RDB memory usage when created 0.82 Mb
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:17:17.350 * Done loading RDB, keys loaded: 0, keys expired: 0.
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:17:17.350 * DB loaded from disk: 0.000 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:17:17.350 * Ready to accept connections
+[32mredis_1            |[0m 1:signal-handler (1658200680) Received SIGTERM scheduling shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:18:00.805 # User requested shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:18:00.805 * Saving the final RDB snapshot before exiting.
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:18:00.813 * DB saved on disk
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:18:00.813 # Redis is now ready to exit, bye bye...
+[32mredis_1            |[0m 1:C 19 Jul 2022 03:18:09.472 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+[32mredis_1            |[0m 1:C 19 Jul 2022 03:18:09.472 # Redis version=7.0.4, bits=64, commit=00000000, modified=0, pid=1, just started
+[32mredis_1            |[0m 1:C 19 Jul 2022 03:18:09.472 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:18:09.472 * monotonic clock: POSIX clock_gettime
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:18:09.473 * Running mode=standalone, port=6379.
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:18:09.473 # Server initialized
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:18:09.473 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:18:09.474 * Loading RDB produced by version 7.0.4
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:18:09.474 * RDB age 9 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:18:09.474 * RDB memory usage when created 0.82 Mb
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:18:09.474 * Done loading RDB, keys loaded: 0, keys expired: 0.
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:18:09.474 * DB loaded from disk: 0.000 seconds
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:18:09.474 * Ready to accept connections
+[32mredis_1            |[0m 1:signal-handler (1658200990) Received SIGTERM scheduling shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:23:10.945 # User requested shutdown...
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:23:10.946 * Saving the final RDB snapshot before exiting.
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:23:10.953 * DB saved on disk
+[32mredis_1            |[0m 1:M 19 Jul 2022 03:23:10.953 # Redis is now ready to exit, bye bye...
+[33mdockerize_boom_nginx_1 exited with code 0
+[0m[32mdockerize_boom_redis_1 exited with code 0
+[0m
