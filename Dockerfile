@@ -1,6 +1,5 @@
 FROM python:3.10.5
 RUN  apt-get -y upgrade
-RUN apt-get install build-essential libffi-dev
 RUN pip install -- pip
 
 
