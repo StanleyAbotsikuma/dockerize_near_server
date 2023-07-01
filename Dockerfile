@@ -5,8 +5,8 @@ RUN pip install -- pip
 
 COPY ./requirements.txt .
 RUN python -m pip install --upgrade pip
-RUN pip install -r requirements.txt
-
+RUN pip install -r requirements.txt .
+RUN pip install Pillow
 
 COPY ./nears_server /app
 
