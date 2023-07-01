@@ -60,10 +60,11 @@ REST_FRAMEWORK = {
           ],
 }
 
-# Set the token expiration settings
+
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=2),  # Set the access token expiration time
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),     # Set the refresh token expiration time
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': True,
 }
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
