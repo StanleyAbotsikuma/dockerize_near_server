@@ -12,5 +12,8 @@ COPY ./nears_server /app
 
 WORKDIR /app
 
+ENV PORT 8080
+ENV HOST 0.0.0.0
+
 COPY ./entrypoint.sh /
 ENTRYPOINT ["sh","/entrypoint.sh"]
