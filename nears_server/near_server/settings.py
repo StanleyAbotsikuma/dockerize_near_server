@@ -12,11 +12,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from datetime import timedelta
 from pathlib import Path
-import environ
-env= environ.Env(
-    # set casting, default value
-    DEBUG=(bool, False)
-)
+# import environ
+# env= environ.Env(
+#     # set casting, default value
+#     DEBUG=(bool, False)
+# )
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,10 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = "django-insecure-c7=jc@sttzigcf=luhyz1esv^s^y1s%-wpzyz@=ap==+5s!*#$"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
+DEBUG = on
 
 ALLOWED_HOSTS = []
 
@@ -96,7 +96,7 @@ TEMPLATES = [
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': env('REDIS_URL'),
+        'LOCATION': 'redis://default:42x72C912oKUHjuStyOXUP22NvJMqNfi@redis-18884.c8.us-east-1-4.ec2.cloud.redislabs.com:18884',
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
@@ -114,7 +114,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [(env('REDIS_URL'))],
+            "hosts": [('redis://default:42x72C912oKUHjuStyOXUP22NvJMqNfi@redis-18884.c8.us-east-1-4.ec2.cloud.redislabs.com:18884')],
            
         },
     },
@@ -163,11 +163,11 @@ ASGI_APPLICATION = 'near_server.asgi.application'
 DATABASES = {
 'default': {
     'ENGINE': 'django.db.backends.mysql',
-    'NAME': env('DB_NAME'),
-    'USER': env('DB_USER'),
-    'PASSWORD': env('DB_PASSWORD'),
-    'HOST': env('DB_HOST'),
-    'PORT': env('DB_PORT'),
+    'NAME':'near_db',
+    'USER': 'database-user',
+    'PASSWORD': '4P%8uq_o4x_H(07s',
+    'HOST': '34.106.193.92',
+    'PORT': 3306,
     'OPTIONS': {
             'sql_mode': 'STRICT_TRANS_TABLES',
         },
