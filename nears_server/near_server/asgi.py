@@ -15,10 +15,11 @@ from channels.auth import AuthMiddlewareStack  # new import
 from channels.routing import ProtocolTypeRouter, URLRouter
 from django.core.asgi import get_asgi_application
 import stream.routing
-
-from .jwt_auth import TokenAuthMiddleware
 os.environ.setdefault('DJANGO_SETTINGS_MODULE',  'near_server.settings')
+
 django.setup()
+from .jwt_auth import TokenAuthMiddleware
+
 application = ProtocolTypeRouter({
   'http': get_asgi_application(),
   'websocket': TokenAuthMiddleware(  # new

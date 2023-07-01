@@ -1,4 +1,5 @@
 #!/bin/sh
+export DJANGO_SETTINGS_MODULE=near_server.settings
 
 python manage.py migrate --no-input
 python manage.py collectstatic --no-input
