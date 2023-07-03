@@ -12,11 +12,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from datetime import timedelta
 from pathlib import Path
-# import environ
-# env= environ.Env(
-#     # set casting, default value
-#     DEBUG=(bool, False)
-# )
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-c7=jc@sttzigcf=luhyz1esv^s^y1s%-wpzyz@=ap==+5s!*#$"
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = ["*"]
 
@@ -60,11 +59,10 @@ REST_FRAMEWORK = {
           ],
 }
 
-
+# Set the token expiration settings
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-    'ROTATE_REFRESH_TOKENS': True,
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=2),  # Set the access token expiration time
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),     # Set the refresh token expiration time
 }
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -81,7 +79,7 @@ ROOT_URLCONF = 'near_server.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR /"templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -97,7 +95,7 @@ TEMPLATES = [
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://default:42x72C912oKUHjuStyOXUP22NvJMqNfi@redis-18884.c8.us-east-1-4.ec2.cloud.redislabs.com:18884',
+        'LOCATION': env('REDIS_URL'),
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
@@ -115,7 +113,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [('redis://default:42x72C912oKUHjuStyOXUP22NvJMqNfi@redis-18884.c8.us-east-1-4.ec2.cloud.redislabs.com:18884')],
+            "hosts": [(env('REDIS_URL'))],
            
         },
     },
@@ -123,58 +121,47 @@ CHANNEL_LAYERS = {
 WSGI_APPLICATION = 'near_server.wsgi.application'
 ASGI_APPLICATION = 'near_server.asgi.application'
 
-# CHANNEL_LAYERS = {
-#     "default": {
-#         "BACKEND": "channels_redis.core.RedisChannelLayer",
-#         "CONFIG": {
-#             "hosts": [("grateful-coral-39861.upstash.io", 39861)],
-#             "password": "12b731f057424b6493e3952dd8f1e743",
-#             "db": 0,
-#             "prefix": "channels",
-#             "socket_timeout": 5,
-#         },
-#     },
+
+
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
 # }
-# CHANNEL_LAYERS = {
-#     "default": {
-#         "BACKEND": "channels_redis.core.RedisChannelLayer",
-#         "CONFIG": {
-#             "hosts": [("grateful-coral-39861.upstash.io", 39861)],
-#             "symmetric_encryption_keys": ['12b731f057424b6493e3952dd8f1e743','12b731f057424b6493e3952dd8f1e743'],
-#             "channel_capacity": {
-#                 "http.request": 1000,
-#                 "websocket.send": 1000,
-#                 "websocket.receive": 1000,
-#             },
-#         },
-#     },
-# }
-
-
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 # DATABASES = {
 # 'default': {
 #     'ENGINE': 'django.db.backends.mysql',
-#     'NAME':'near_db',
-#     'USER': 'database-user',
-#     'PASSWORD': '4P%8uq_o4x_H(07s',
-#     'HOST': '34.106.193.92',
-#     'PORT': 3306,
+#     'NAME': env('DB_NAME'),
+#     'USER': env('DB_USER'),
+#     'PASSWORD': env('DB_PASSWORD'),
+#     'HOST': env('DB_HOST'),
+#     'PORT': env('DB_PORT'),
 #     'OPTIONS': {
 #             'sql_mode': 'STRICT_TRANS_TABLES',
 #         },
     
 #   }
 #   }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT'),
+          'OPTIONS': {
+            'ssl': {
+                'ca': [BASE_DIR /"nears_server-ca-certificate.crt"],
+            },
+            'sql_mode': 'STRICT_TRANS_TABLES',
+        },
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -209,11 +196,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    "/var/www/static/",
+]
 
-
-
-STATIC_ROOT = '/static/'
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 MEDIA_ROOT = BASE_DIR/'media/'
 MEDIA_URL = '/media/'
 # Default primary key field type
