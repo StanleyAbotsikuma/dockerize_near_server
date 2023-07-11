@@ -1,6 +1,9 @@
 from django.db import models
 import uuid
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager,PermissionsMixin
+from django.contrib.auth.hashers import make_password
+
+
 
 class UserAuthManager(BaseUserManager):
     def create_user(self, phone_number, password, device_id, email=None, **extra_fields):
@@ -21,6 +24,9 @@ class UserAuth(AbstractBaseUser, PermissionsMixin):
     phone_number = models.CharField(max_length=10, unique=True)
     device_id = models.CharField(max_length=100)
     email = models.EmailField(unique=True, null=True, blank=True)
+    password = models.CharField(max_length=128)
+
+    
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
@@ -38,7 +44,10 @@ class UserAuth(AbstractBaseUser, PermissionsMixin):
     def get_short_name(self):
         return self.email
     
-    
+    def save(self, *args, **kwargs):
+        # Hash the password before saving the user
+        self.password = make_password(self.password)
+        super().save(*args, **kwargs)
 
 class User(models.Model):
     user_id = models.CharField(primary_key=True, max_length=20)
@@ -46,6 +55,7 @@ class User(models.Model):
     last_name = models.CharField(max_length=50)
     date_of_birth = models.DateField()
     phone_number = models.CharField(max_length=10,unique=True)
+    account = models.ForeignKey(UserAuth, on_delete=models.CASCADE)
     place_of_residence = models.CharField(max_length=100)
     ghana_card_number = models.CharField(max_length=20)
     ghana_card_picture = models.ImageField(upload_to='ghana_card_pictures/',default='images/default_ghana_card.jpg')
@@ -63,6 +73,7 @@ class Staff(models.Model):
     staff_username = models.CharField(max_length=50)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
+    account = models.ForeignKey(UserAuth, on_delete=models.CASCADE)
     position = models.CharField(max_length=100)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)

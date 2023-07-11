@@ -4,20 +4,116 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Sign up Test</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        {% load static %}
-        <link rel="stylesheet" href="{% static 'css/skeleton.css' %}">
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        
-        <script src="" async defer></script>
-    </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign Up Page</title>
+
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/skeleton.css' %}">
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+ 
+</head>
+
+<body>
+  <div class="form-container" id="signup_form_div">
+    <h4 style="text-align: center; color: #fff;">Sign Up</h4>
+    <form id="signup_form">
+      <div class="row">
+        <div class="six columns">
+          <label for="phone_number">Phone Number</label>
+          <input class="u-full-width" type="tel" id="phone_number" name="phone_number"
+            placeholder="Enter your phone number">
+        </div>
+        <div class="six columns">
+          <label for="device_id">Device ID</label>
+          <input class="u-full-width" type="text" id="device_id" name="device_id" placeholder="Enter your device ID"
+            readonly>
+        </div>
+      </div>
+      <label for="email">Email</label>
+      <input class="u-full-width" type="email" id="email" name="email" placeholder="Enter your email">
+      <div class="row">
+        <div class="six columns">
+          <label for="password">Password</label>
+          <input class="u-full-width" type="password" id="password" name="password" placeholder="Enter your password">
+        </div>
+        <div class="six columns">
+          <label for="confirm_password">Confirm Password</label>
+          <input class="u-full-width" type="password" id="confirm_password" name="confirm_password"
+            placeholder="Confirm your password">
+        </div>
+      </div>
+      <input class="button-primary u-full-width" type="submit" onclick='signupFunction()' value="Sign Up">
+    </form>
+  </div>
+
+  <div class="form-container" id="staff-form" style="display: none;">
+    <h4 style="text-align: center; color: #fff;">Create Staff Account</h4>
+    <form id="staff_signup_form">
+      <label for="staff_username">Staff Username</label>
+      <input class="u-full-width" type="text" value="mysusername" id="staff_username" name="staff_username" readonly
+        placeholder="Enter staff username">
+      <label for="first_name">First Name</label>
+      <input class="u-full-width" type="text" id="first_name" name="first_name" placeholder="Enter first name">
+      <label for="last_name">Last Name</label>
+      <input class="u-full-width" type="text" id="last_name" name="last_name" placeholder="Enter last name">
+      <label for="position">Position</label>
+      <input class="u-full-width" type="text" id="position" name="position" placeholder="Enter position">
+      <input class="button-primary u-full-width" type="submit" onclick='staffSignupFunction()' value="Sign Up">
+    </form>
+  </div>
+</body>
+<script src="{% static 'js/crypto-js.min.js' %}"></script>
+<script src="{% static 'js/auth.js' %}"></script>
+<script>
+  //Confirm password
+  var passwordInput = document.getElementById("password");
+  var confirmPasswordInput = document.getElementById("confirm_password");
+
+  passwordInput.addEventListener("input", validatePasswords);
+  confirmPasswordInput.addEventListener("input", validatePasswords);
+
+  function validatePasswords() {
+    var password = passwordInput.value;
+    var confirmPassword = confirmPasswordInput.value;
+
+    if (password != confirmPassword) {
+      confirmPasswordInput.setCustomValidity("Passwords do not match.");
+    } else {
+      confirmPasswordInput.setCustomValidity("");
+    }
+  }
+
+  //Disable onform submit
+  let form = document.getElementById('signup_form');
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+  });
+  let form1 = document.getElementById('staff_signup_form');
+  form1.addEventListener('submit', function (event) {
+    event.preventDefault();
+  });
+  
+  //Change form on staff page
+  function toggleForm() {
+    const originalForm = document.getElementById('signup_form_div');
+    const staffForm = document.getElementById('staff-form');
+    if (originalForm.style.display === 'none') {
+      originalForm.style.display = 'block';
+      staffForm.style.display = 'none';
+    } else {
+      originalForm.style.display = 'none';
+      staffForm.style.display = 'block';
+    }
+  }
+
+</script>
+
 </html>

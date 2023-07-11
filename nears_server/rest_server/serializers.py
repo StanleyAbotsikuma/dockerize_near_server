@@ -9,17 +9,17 @@ class UserAuthSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['user_id', 'first_name', 'last_name', 'date_of_birth', 'phone_number', 'place_of_residence', 'ghana_card_number', 'ghana_card_picture', 'photo', 'created_on', 'updated_on']
+        fields = [ 'first_name', 'last_name', 'date_of_birth', 'account', 'place_of_residence', 'ghana_card_number']
 
 class StaffSerializer(serializers.ModelSerializer):
     class Meta:
         model = Staff
-        fields = ['staff_id', 'staff_username', 'first_name', 'last_name', 'position', 'created_on', 'updated_on']
+        fields = ['staff_username', 'first_name', 'last_name','account', 'position']
 
 class DeviceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Device
-        fields = ['device_id', 'location_coordinate', 'location', 'type', 'user_id', 'name', 'status', 'created_on', 'updated_on']
+        fields = ['location_coordinate', 'location', 'type', 'user_id', 'name', 'status']
 
 class DepartmentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -50,3 +50,13 @@ class TypesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Types
         fields = ['type_id', 'name']
+        
+        
+        
+
+# GET
+
+class StaffSerializer_R(serializers.ModelSerializer):
+    class Meta:
+        model = Staff
+        fields = ['staff_id', 'staff_username', 'first_name', 'last_name','account', 'position', 'created_on']

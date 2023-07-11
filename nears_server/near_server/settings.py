@@ -31,6 +31,7 @@ DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = ["*"]
 
+SESSION_COOKIE_AGE = 600
 
 # Application definition
 
@@ -56,12 +57,14 @@ AUTH_USER_MODEL = "rest_server.UserAuth"
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+                'rest_framework.authentication.SessionAuthentication',
+
           ],
 }
 
 # Set the token expiration settings
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=2),  # Set the access token expiration time
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),  # Set the access token expiration time
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),     # Set the refresh token expiration time
 }
 MIDDLEWARE = [
@@ -101,11 +104,11 @@ CACHES = {
         }
     }
 }
-# CHANNEL_LAYERS = {
-#     "default": {
-#         "BACKEND": "channels.layers.InMemoryChannelLayer"
-#     }
-# }
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}
 
 # settings.py
 
@@ -197,9 +200,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
-    "/var/www/static/",
-]
+    BASE_DIR / "static"]
 
 STATIC_URL = 'static/'
 MEDIA_ROOT = BASE_DIR/'media/'

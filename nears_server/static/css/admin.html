@@ -1,20 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>Login Page</title>
-    {% load static %}
+    <meta charset="UTF-8">
+    <title>Agent</title>
+    <link rel="stylesheet" href="skeleton.css"/>
     
-  <link rel="stylesheet" href="{% static 'css/skeleton.css' %}">
-  
-  <link rel="stylesheet" href="{% static 'css/admin.css' %}">
-    <script src="{% static 'js/crypto-js.min.js' %}"></script>
-    <script src="{% static 'js/session.js' %}"></script>
-    
+    <link rel="stylesheet" href="admin.css">
   </head>
-
   <body>
-  
     <div class="container-fluid">
       <header class="header">
         <h3>Agent</h3>
@@ -25,7 +18,7 @@
             <span>Online</span>
           </div>
          
-          <button class="btn logout-button" onclick="logout()">Log Out</button>
+          <button class="btn logout-button">Log Out</button>
         </div>
       </header>
       <main class="main-content">
@@ -87,12 +80,6 @@
         </div>
       </main>
     </div>
+    <script src="admin.js"></script>
   </body>
-  <script src="{% static 'js/admin.js' %}"></script>
-    
-  <script>
-    function logout() {
-
-      localStorage.clear();
-    } </script>
 </html>
