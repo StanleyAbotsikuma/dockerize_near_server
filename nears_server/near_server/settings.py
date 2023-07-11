@@ -104,11 +104,11 @@ CACHES = {
         }
     }
 }
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels.layers.InMemoryChannelLayer"
-    }
-}
+# CHANNEL_LAYERS = {
+#     "default": {
+#         "BACKEND": "channels.layers.InMemoryChannelLayer"
+#     }
+# }
 
 # settings.py
 
@@ -204,7 +204,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
 
-STATIC_URL = 'static/'
+STATIC_URL =BASE_DIR/ 'static/'
 MEDIA_ROOT = BASE_DIR/'media/'
 MEDIA_URL = '/media/'
 # Default primary key field type
