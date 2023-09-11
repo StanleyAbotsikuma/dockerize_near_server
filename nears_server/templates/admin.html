@@ -1,98 +1,165 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Login Page</title>
-    {% load static %}
-    
-  <link rel="stylesheet"  type="text/css" href="{% static 'css/skeleton.css' %}">
-  
-  <link rel="stylesheet"  type="text/css" href="{% static 'css/admin.css' %}">
-    <script src="{% static 'js/crypto-js.min.js' %}"></script>
-    <script src="{% static 'js/session.js' %}"></script>
-    
-  </head>
 
-  <body>
-  
-    <div class="container-fluid">
-      <header class="header">
-        <h3>Agent</h3>
-        <div class="user-info">
-          <p class="full-name"></p>
-          <p class="staff-id"></p>
-          <div class="toggle-button online" onclick="toggleButton()">
-            <span>Online</span>
-          </div>
-         
-          <button class="btn logout-button" onclick="logout()">Log Out</button>
+<head>
+  <meta charset="utf-8">
+  <title>Login Page</title>
+  {% load static %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/skeleton.css' %}">
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/admin.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/leaflet.css' %}">
+
+  <style>
+
+
+
+
+  </style>
+  <script src="{% static 'js/session.js' %}"></script>
+  <script src="{% static 'js/websocket-lib.js' %}"></script>
+
+</head>
+
+<!-- <body onunload = "javascript:window.localStorage.clear()">   -->
+
+<body>
+  <div class="container-fluid">
+    <header class="header">
+      <h3>Agent</h3>
+      <div class="user-info">
+        <p class="full-name"></p>
+        <p class="staff-id"></p>
+        <!-- <p class="staff-position"></p> -->
+
+        <div class="toggle-button online" onclick="toggleButton()">
+          <span>Online</span>
         </div>
-      </header>
-      <main class="main-content">
-               <div class="content-section">
- 
-                <div class="form-container">
-                  <h5 style="text-align: center; color:#333;">Current Case</h5>
-                  <form>
-                    <div class="row">
-                      <div class="six columns">
-                        <label for="case_id">Case ID</label>
-                        <input class="u-full-width" type="text" id="case_id" name="case_id" placeholder="Enter the case ID">
-                      </div>
-                      <div class="six columns">
-                        <label for="type">Type</label>
-                        <input class="u-full-width" type="text" id="type" name="type" placeholder="Enter the type of case">
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="six columns">
-                        <label for="mode">Mode</label>
-                        <input class="u-full-width" type="text" id="mode" name="mode" placeholder="Enter the mode of case">
-                      </div>
-                      <div class="six columns">
-                        <label for="case">Case</label>
-                        <input class="u-full-width" type="text" id="case" name="case" placeholder="Enter the case">
-                      </div>
-                    </div>
-                    <label for="user_id">User ID</label>
-                    <input class="u-full-width" type="text" id="user_id" name="user_id" placeholder="Enter the user ID">
-                    <div class="row">
-                      <div class="six columns">
-                        <label for="status">Status</label>
-                        <input class="u-full-width" type="text" id="status" name="status" placeholder="Enter the status of case">
-                      </div>
-                      <div class="six columns">
-                        <label for="resource_id">Resource ID</label>
-                        <input class="u-full-width" type="text" id="resource_id" name="resource_id" placeholder="Enter the resource ID">
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="six columns">
-                        <label for="location">Location</label>
-                        <input class="u-full-width" type="text" id="location" name="location" placeholder="Enter the location">
-                      </div>
-                      <div class="six columns">
-                        <label for="place">Place</label>
-                        <input class="u-full-width" type="text" id="place" name="place" placeholder="Enter the place">
-                      </div>
-                    </div>
-                    <label for="realtime_updates">Realtime Updates?</label>
-                    <input class="u-full-width" type="checkbox" id="realtime_updates" name="realtime_updates">
-                    <label for="received_by">Received By</label>
-                    <input class="u-full-width" type="text" id="received_by" name="received_by" placeholder="Enter the received by">
-                    <input class="button-primary u-full-width" type="button" value="Submit" onclick="submitForm()">
-                  </form>
-                </div>
-          
-        </div>
-      </main>
+
+        <button class="btn logout-button" id="logoutbtn" onclick="logout()">Log Out</button>
+      </div>
+    </header>
+
+    <!-- action -->
+    <div id="viewLocation" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="map"></div>
+      </div>
     </div>
-  </body>
-  <script src="{% static 'js/admin.js' %}"></script>
-    
-  <script>
-    function logout() {
 
-      localStorage.clear();
-    } </script>
+    <div id="viewDepartments" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModalDepartments()">&times;</span>
+    <h1>Report To:</h1>
+        <div id="departments" style="  display: flex;
+        flex-flow: wrap">
+          <div class="department-wrap"></div>
+          <input type="checkbox" >
+         
+          
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="main-content">
+    <div class="content-section">
+
+      <div class="form-container">
+        <h5 style="text-align: center; color:#333;">Current Case</h5>
+        <form>
+          <div class="row">
+            <div class="six columns">
+              <label for="case_id">Case ID</label>
+              <input class="u-full-width" type="text" id="case_id" name="case_id" placeholder="Enter the case ID" readonly>
+            </div>
+            <div class="six columns">
+              <label for="type">Type</label>
+              <!-- addition -->
+              <select id="type" class="u-full-width" readonly>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="six columns">
+              <label for="mode">Mode</label>
+              <input class="u-full-width" type="text" id="mode" name="mode" placeholder="Enter the mode of case">
+            </div>
+            <div class="six columns">
+              <label for="case">Case</label>
+              <input class="u-full-width" type="text" id="case" name="case" placeholder="Enter the case">
+            </div>
+          </div>
+          <label for="user_id">User ID</label>
+          <input class="u-full-width" type="text" id="user_id" name="user_id" placeholder="Enter the user ID" readonly>
+          <div class="row">
+            <div class="six columns">
+              <label for="status">Status</label>
+              <input class="u-full-width" type="text" id="status" name="status" placeholder="Enter the status of case">
+            </div>
+            <div class="six columns">
+              <label for="resource_id">Resource ID</label>
+              <input class="u-full-width" type="text" id="resource_id" name="resource_id"
+                placeholder="Enter the resource ID">
+            </div>
+          </div>
+          <div class="row">
+            <div class="six columns">
+              <label for="location">Location</label>
+              <input class="u-full-width" type="text" id="location" name="location" placeholder="Enter the location">
+            </div>
+            <div class="six columns">
+              <label for="place">Place</label>
+              <input class="u-full-width" type="text" id="place" name="place" placeholder="Enter the place">
+            </div>
+          </div>
+          <label for="realtime_updates">Realtime Updates?</label>
+          <input class="u-full-width" type="checkbox" id="realtime_updates" name="realtime_updates">
+          <label for="received_by">Received By</label>
+          <input class="u-full-width" type="text" id="received_by" name="received_by"
+            placeholder="Enter the received by" readonly>
+          <input class="button-primary u-full-width" type="button" value="View on Map" onclick="viewLocation()">
+          <input class="button-primary u-full-width" type="button" value="Report To" onclick="viewDepartments ()">
+
+        </form>
+      </div>
+
+      <div class="activities_container">
+        <!-- <div class="lessBusyDisplay" >
+                   <h1> No activity</h1>
+                  </div> -->
+
+        <div class="activities videoCall">
+          <video autoplay id="remoteVideo"></video>
+
+        </div>
+        <!-- <div class="activities audioCall">
+                    <video id="remoteVideo activities" autoplay></video>
+                  </div>
+                  <div class="activities textCall">
+                    <video id="remoteVideo" autoplay></video>
+                  </div> -->
+      </div>
+
+    </div>
+  </main>
+  </div>
+</body>
+
+<script src="{% static 'js/leaflet.js' %}"></script>
+<script src="{% static 'js/admin.js' %}"></script>
+
+<script>
+
+  function logout() {
+
+    localStorage.clear();
+    window.location.href = Protocol + URL + '/useragent/signin';
+
+
+  } </script>
+
 </html>

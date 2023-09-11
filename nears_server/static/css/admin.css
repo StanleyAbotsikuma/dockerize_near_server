@@ -2,10 +2,12 @@
   padding: 0;
   margin: 0;
 }
+
 body {
   background-color: #333;
 
 }
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -15,6 +17,7 @@ body {
   color: #fff;
   box-sizing: border-box;
 }
+
 .full-name {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
@@ -29,13 +32,14 @@ body {
 }
 
 .logout-button {
-  
+
   background-color: #fff;
   color: #1abc9c;
   border: none;
-  border-radius: 0.5rem;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  height: 34px;
+  border-radius: 0%;
 }
 
 .logout-button:hover {
@@ -46,14 +50,17 @@ body {
 .main-content {
   box-sizing: border-box;
 }
+
 .content-section {
   width: 100%;
+  display: flex;
 }
 
 @media screen and (max-width: 800px) {
   .main-content {
     flex-direction: column;
   }
+
   .content-section {
     margin-bottom: 1rem;
   }
@@ -75,6 +82,7 @@ body {
   transition: background-color 0.2s ease-in-out;
   margin-bottom: 1rem;
 }
+
 .toggle-button::before {
   content: "";
   position: absolute;
@@ -86,18 +94,23 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   transition: transform 0.2s ease-in-out;
 }
+
 .toggle-button.online {
   background-color: #638e75;
 }
+
 .toggle-button.online::before {
   transform: translateX(60px);
 }
+
 .toggle-button.offline {
   background-color: #e74c3c;
 }
+
 .toggle-button.offline::before {
   transform: translateX(-5px);
 }
+
 .toggle-button span {
   position: absolute;
   top: 50%;
@@ -110,11 +123,104 @@ body {
 }
 
 /* case form */
-.form-container
-{
+.form-container {
   width: 30%;
-  padding:1.5rem;
+  padding: 1.5rem;
   box-sizing: border-box;
   background-color: whitesmoke;
 }
 
+
+.activities_container {
+  width: 70%;
+  box-sizing: border-box;
+  background-color: transparent;
+  display: block;
+  position: relative;
+}
+
+
+.lessBusyDisplay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  text-align: center;
+  color: white;
+  align-content: center;
+  box-sizing: content-box;
+  display: grid;
+}
+
+.activities {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  /* z-index: 10; */
+}
+
+
+
+/* addition */
+
+/* Modal Box Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 700px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* OpenStreetMap Styles */
+#map {
+  width: 100%;
+  height: 400px;
+}
+
+
+
+#remoteVideo {
+  background: black;
+  border: 1px solid gray;
+  width: 500px;
+  height: 700px;
+  margin: auto;
+}
+
+
+.department-wrap {
+  width: 200px;
+  height: 200px;
+  border: solid 1px #7e7e7e9c;
+  background-color: transparent;
+  margin: 4px;
+
+}

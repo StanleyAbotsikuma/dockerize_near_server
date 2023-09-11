@@ -35,21 +35,19 @@ class messageConsumer(WebsocketConsumer):
 
     def receive(self, text_data=None, bytes_data=None):
         text_data_json = json.loads(text_data)
-        # print(text_data_json)
-        receiver = text_data_json['receiver']
-        type = text_data_json['type']
-        data =text_data_json['data']
-       
+        message = text_data_json['message']
+        message_type = text_data_json['message_type']
         
-        
+        print(message)
         # send chat message event to the room
         async_to_sync(self.channel_layer.group_send)(
             self.set_name,
             {
-                'type':'payload',
-                'message_type': type,
-                'data': data,
-                'receiver': receiver,
+                'type': 'payload',
+                'message': message,
+                "username":str(self.user),
+                'message_type': message_type,
+                'sender_channel_name': self.channel_name
             }
         )
         
@@ -59,5 +57,10 @@ class messageConsumer(WebsocketConsumer):
         #     print(self.user)
         #sending to every except sender
         if self.channel_name != event.get('sender_channel_name'):
-            self.send(json.dumps({'data':event.get("data"),'type':event.get("message_type"),'receiver':event.get("receiver")}))
+
+            #send every thing
+            # self.send(text_data=json.dumps(event))
+
+            print(event)
+            self.send(json.dumps({'type': 'websocket.send','message':event.get("message"),'message_type':event.get("message_type"),'username':event.get("username")}))
 

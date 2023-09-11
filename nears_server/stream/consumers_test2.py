@@ -1,17 +1,16 @@
 import json
 
 from asgiref.sync import async_to_sync
-from channels.generic.websocket import WebsocketConsumer
+from channels.generic.websocket import AsyncWebsocketConsumer
 
-class messageConsumer(WebsocketConsumer):
-
-    def __init__(self, *args, **kwargs):
+class messageConsumer(AsyncWebsocketConsumer):
+    async def __init__(self, *args, **kwargs):
         super().__init__(args, kwargs)
         self.set_name = None
         self.name = None
         self.user = None
        
-    def connect(self):
+    async def connect(self):
         self.name = self.scope['url_route']['kwargs']['name']
         self.set_name = f'chat_{self.name}'
         self.user = self.scope['user']
@@ -26,20 +25,18 @@ class messageConsumer(WebsocketConsumer):
             self.channel_name,
         )
 
-    def disconnect(self, close_code):
+    async def disconnect(self, close_code):
         async_to_sync(self.channel_layer.group_discard)(
             self.set_name,
             self.channel_name,
         )
         
 
-    def receive(self, text_data=None, bytes_data=None):
+    async def receive(self, text_data=None, bytes_data=None):
         text_data_json = json.loads(text_data)
-        # print(text_data_json)
-        receiver = text_data_json['receiver']
-        type = text_data_json['type']
-        data =text_data_json['data']
-       
+        print(text_data_json)
+        data = text_data_json['data']
+        type_send = text_data_json['message_type']
         
         
         # send chat message event to the room
@@ -47,9 +44,8 @@ class messageConsumer(WebsocketConsumer):
             self.set_name,
             {
                 'type':'payload',
-                'message_type': type,
+                'message_type': type_send,
                 'data': data,
-                'receiver': receiver,
             }
         )
         
@@ -59,5 +55,11 @@ class messageConsumer(WebsocketConsumer):
         #     print(self.user)
         #sending to every except sender
         if self.channel_name != event.get('sender_channel_name'):
-            self.send(json.dumps({'data':event.get("data"),'type':event.get("message_type"),'receiver':event.get("receiver")}))
+
+            #send every thing
+        # print(event)
+        # self.send(text_data=json.dumps(event))
+
+            # print(event)
+            self.send(json.dumps({'data':event.get("data"),'message_type':event.get("message_type")}))
 

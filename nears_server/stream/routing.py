@@ -1,6 +1,6 @@
 from django.urls import re_path
 
-from . import consumers
+from . import consumers,consumers_test1,consumers_test2,emergency,agents
 
 websocket_urlpatterns = [
     #for test
@@ -10,7 +10,12 @@ websocket_urlpatterns = [
      #for tracking
     re_path(r'ws/tracking/(?P<name>\w+)/', consumers.messageConsumer.as_asgi()),
     #for calls
-    re_path(r'ws/call/(?P<name>\w+)/', consumers.messageConsumer.as_asgi()),
+    re_path(r'ws/emergency/', emergency.emergencyConsumer.as_asgi()),
     #agents
-    re_path(r'ws/agents/', consumers.messageConsumer.as_asgi()),
+    re_path(r'ws/agents/', agents.agentsConsumer.as_asgi()),
+    
+    
+        #agents
+    re_path(r'ws/understanding1/(?P<name>\w+)/', consumers_test1.messageConsumer.as_asgi()),
+    re_path(r'ws/understanding2/(?P<name>\w+)/', consumers_test2.messageConsumer.as_asgi()),
 ]

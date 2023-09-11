@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'stream',
     'rest_server',
     "channels",
@@ -64,7 +65,7 @@ REST_FRAMEWORK = {
 
 # Set the token expiration settings
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),  # Set the access token expiration time
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=120),  # Set the access token expiration time
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),     # Set the refresh token expiration time
 }
 MIDDLEWARE = [
@@ -75,6 +76,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+
+
+]
+
+CORS_ORIGIN_WHITELIST = [
+    'http://127.0.0.1:1430',
+    # other allowed origins
 ]
 
 ROOT_URLCONF = 'near_server.urls'
@@ -95,32 +104,38 @@ TEMPLATES = [
     },
 ]
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': env('REDIS_URL'),
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-        }
-    }
-}
-# CHANNEL_LAYERS = {
-#     "default": {
-#         "BACKEND": "channels.layers.InMemoryChannelLayer"
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django_redis.cache.RedisCache',
+#         'LOCATION': env('REDIS_URL'),
+#         'OPTIONS': {
+#             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+#         }
 #     }
 # }
 
-# settings.py
-
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    }
+}
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [(env('REDIS_URL'))],
-           
-        },
-    },
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
 }
+
+# settings.py
+
+# CHANNEL_LAYERS = {
+#     "default": {
+#         "BACKEND": "channels_redis.core.RedisChannelLayer",
+#         "CONFIG": {
+#             "hosts": [(env('REDIS_URL'))],
+           
+#         },
+#     },
+# }
 WSGI_APPLICATION = 'near_server.wsgi.application'
 ASGI_APPLICATION = 'near_server.asgi.application'
 
@@ -135,36 +150,37 @@ ASGI_APPLICATION = 'near_server.asgi.application'
 #     }
 # }
 
-# DATABASES = {
-# 'default': {
-#     'ENGINE': 'django.db.backends.mysql',
-#     'NAME': env('DB_NAME'),
-#     'USER': env('DB_USER'),
-#     'PASSWORD': env('DB_PASSWORD'),
-#     'HOST': env('DB_HOST'),
-#     'PORT': env('DB_PORT'),
-#     'OPTIONS': {
-#             'sql_mode': 'STRICT_TRANS_TABLES',
-#         },
-    
-#   }
-#   }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': env('DB_NAME'),
-        'USER': env('DB_USER'),
-        'PASSWORD': env('DB_PASSWORD'),
-        'HOST': env('DB_HOST'),
-        'PORT': env('DB_PORT'),
-          'OPTIONS': {
-            'ssl': {
-                'ca': [BASE_DIR /"nears_server-ca-certificate.crt"],
-            },
+'default': {
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': env('DB_NAME'),
+    'USER': env('DB_USER'),
+    'PASSWORD': env('DB_PASSWORD'),
+    'HOST': env('DB_HOST'),
+    'PORT': env('DB_PORT'),
+    'OPTIONS': {
+            "init_command": "SET foreign_key_checks = 0;",
             'sql_mode': 'STRICT_TRANS_TABLES',
         },
-    }
-}
+    
+  }
+  }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': env('DB_NAME'),
+#         'USER': env('DB_USER'),
+#         'PASSWORD': env('DB_PASSWORD'),
+#         'HOST': env('DB_HOST'),
+#         'PORT': env('DB_PORT'),
+#           'OPTIONS': {
+#             'ssl': {
+#                 'ca': [BASE_DIR /"nears_server-ca-certificate.crt"],
+#             },
+#             'sql_mode': 'STRICT_TRANS_TABLES',
+#         },
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -200,11 +216,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 STATICFILES_DIRS = [
-    
-    BASE_DIR / "static"
-]
-STATIC_ROOT = BASE_DIR / "static"
-STATIC_URL ='static/'
+    BASE_DIR / "static"]
+
+STATIC_URL = 'static/'
 MEDIA_ROOT = BASE_DIR/'media/'
 MEDIA_URL = '/media/'
 # Default primary key field type

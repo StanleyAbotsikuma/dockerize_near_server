@@ -1,14 +1,16 @@
 
 let URL = window.location.host;
 let Protocol = 'http://';
+let ProtocolWs = 'ws://' ;
+
 let responses;
 
 
 function saveSessionData(data) {
-    const key = CryptoJS.lib.WordArray.random(16);
-    const encryptedData = CryptoJS.AES.encrypt(data, key.toString());
-    localStorage.setItem('session_data', encryptedData.toString());
-    localStorage.setItem('session_key', key.toString());
+    // const key = CryptoJS.lib.WordArray.random(16);
+    // const encryptedData = CryptoJS.AES.encrypt(data, key.toString());
+    localStorage.setItem('session_data', data);
+    // localStorage.setItem('session_key', key.toString());
 }
 
 function sign_in() {
@@ -27,7 +29,7 @@ function sign_in() {
             const result = await response.json();
             localStorage.setItem('access_token', result.access);
             localStorage.setItem('refresh_token', result.refresh);
-            saveSessionData(result.access);
+            // saveSessionData(result.access);
             window.location.href = 'http://' + URL + '/useragent/';
         })
         .catch(error => {
@@ -80,7 +82,7 @@ function signupFunction() {
     fetch(Protocol + URL + '/api/create_account/', requestOptions)
         .then(response => {
             if (response.ok) {
-                sign_in_sign_up(getPhone_number,getPassword);
+                sign_in_sign_up(getPhone_number, getPassword);
             }
         })
         .catch(error => {
@@ -100,11 +102,11 @@ function staffSignupFunction() {
         last_name: getLastname,
         position: getPosition
     }
-  
+
 
     const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' , 'Authorization': `Bearer ${accessToken}`},
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${accessToken}` },
         body: JSON.stringify(data)
     };
     fetch(Protocol + URL + '/api/staff/', requestOptions)
@@ -150,7 +152,7 @@ function refreshFunction() {
             console.error(error);
         });
 }
-function sign_in_sign_up(getPhone_number,getPassword) {
+function sign_in_sign_up(getPhone_number, getPassword) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -167,13 +169,9 @@ function sign_in_sign_up(getPhone_number,getPassword) {
             saveSessionData(result.access);
             toggleForm();
 
-           
+
         })
         .catch(error => {
             console.error(error);
         });
 }
-
-
-
-
