@@ -1,7 +1,5 @@
 FROM python:3.10.6
-
-RUN  apt-get -y upgrade 
-
+RUN  apt-get -y upgrade
 RUN pip install -- pip
 
 

@@ -18,10 +18,13 @@ services:
       - static:/static
     ports:
       - "81:80"
-      - 443:443
-
     depends_on:
       - django_gunicorn
+
+
+
+  volumes:
+    static:
 
 
 
