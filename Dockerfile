@@ -1,7 +1,6 @@
 FROM python:3.10.6
-RUN  apt-get -y upgrade  && \
-    apt-get install -y certbot && \
-    rm -rf /var/lib/apt/lists/*
+
+RUN  apt-get -y upgrade 
 
 RUN pip install -- pip
 
